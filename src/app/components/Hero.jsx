@@ -6,20 +6,21 @@ import {
   MapPin,
   Github,
   Linkedin,
-  ArrowUpRight,
+  ArrowUpRight, // Este no se usaba, pero lo dejo por si acaso
   Briefcase,
   Instagram,
   Mail,
+  Download, // 1. IMPORTAMOS EL ICONO NUEVO
 } from "lucide-react";
-// 1. IMPORTAR EL HOOK
 import { useLanguage } from "../../context/LanguageContext";
 
 const Hero = () => {
   const [time, setTime] = useState(new Date());
-  // 2. USAR EL DICCIONARIO (t)
   const { t } = useLanguage();
 
   useEffect(() => {
+    // Evita errores de hidratación inicializando la fecha solo en el cliente si es necesario,
+    // o usando un useEffect simple como tienes está bien.
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
@@ -59,7 +60,6 @@ const Hero = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                {/* 3. REEMPLAZAR TEXTO DURO POR VARIABLE */}
                 {t.hero.badge}
               </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-white mb-2 tracking-tight">
@@ -72,9 +72,10 @@ const Hero = () => {
                 {t.hero.role}
               </p>
             </div>
-            {/* Redes... (El código de los iconos es igual) */}
-            <div className="flex flex-wrap gap-3 mt-6 md:mt-0 relative z-20">
-              {/* ... Iconos GitHub, Linkedin, Instagram igual que antes ... */}
+
+            {/* SECCIÓN DE BOTONES Y REDES */}
+            <div className="flex flex-wrap gap-3 mt-6 md:mt-0 relative z-20 items-center">
+              {/* Iconos Sociales */}
               <a
                 href="https://github.com/Eusoj21"
                 target="_blank"
@@ -97,16 +98,29 @@ const Hero = () => {
                 <Instagram size={24} />
               </a>
 
-              <a
-                href="mailto:clarens2015cedral@gmail.com"
-                className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all flex items-center gap-2 shadow-lg hover:shadow-white/20 ml-auto md:ml-0"
-              >
-                {t.hero.contactBtn} <Mail size={20} />
-              </a>
+              {/* 2. GRUPO DE ACCIONES (CV + CONTACTO) ALINEADO A LA DERECHA */}
+              <div className="flex gap-3 ml-auto md:ml-0">
+                {/* Botón Descargar CV */}
+                <a
+                  href="/cv.pdf"
+                  download="CV_Josue_Alvarado.pdf"
+                  className="px-6 py-3 bg-slate-800/50 border border-slate-700 text-white font-bold rounded-xl hover:bg-white hover:text-black transition-all flex items-center gap-2"
+                >
+                  CV <Download size={20} />
+                </a>
+
+                {/* Botón Contacto */}
+                <a
+                  href="mailto:clarens2015cedral@gmail.com"
+                  className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all flex items-center gap-2 shadow-lg hover:shadow-white/20"
+                >
+                  {t.hero.contactBtn} <Mail size={20} />
+                </a>
+              </div>
             </div>
           </motion.div>
 
-          {/* Foto (Igual que antes) */}
+          {/* Foto */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
