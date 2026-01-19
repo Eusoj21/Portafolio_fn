@@ -49,7 +49,7 @@ const Projects = () => {
         "State Management",
       ],
       stack: ["Vue.js", "Pinia", "Tailwind", "Axios"],
-      github: "https://github.com/nick503-droid/recipe_vue_front",
+      github: "https://github.com/Eusoj21/NUTRITIMEE",
       demo: null,
     },
     {
@@ -66,7 +66,7 @@ const Projects = () => {
         "PDF Reports",
       ],
       stack: ["Laravel", "PHP", "Bootstrap", "MySQL"],
-      github: "https://github.com/Steven-c4/club-deportivo-php",
+      github: "https://github.com/Eusoj21/Clubdeportivo_php",
       demo: null,
     },
     {
@@ -83,7 +83,7 @@ const Projects = () => {
         "Responsive Design",
       ],
       stack: ["HTML/CSS", "JS", "PHP", "MySQL"],
-      github: "https://github.com/Steven-c4",
+      github: "https://github.com/Eusoj21/Eucodes",
       demo: null,
     },
   ];
